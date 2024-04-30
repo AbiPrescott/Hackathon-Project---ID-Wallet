@@ -1,20 +1,36 @@
-
 body {
     background-color: rgb(53, 51, 205);
 }
-.centered {
+
+.parent {
+    width: 300px;
+    height: 500px; 
+    margin: auto;  
+}
+
+.child {
+    padding: 50% 0;
+    text-align: center;
+}
+
+
+
+/* .image {
     margin: auto;
     width: 50%;
-    display: flex;
-    flex-direction: column;
+    background-color: bisque;
 }
 
-.centered h1 {
-    text-align: center;
-    font-family: monaco;
-}
-
-.centered input {
+.greeting {
     font-family: monaco;
     margin: auto;
+    width: 50%;
+    background-color: aqua;
 }
+
+.password {
+    font-family: monaco;
+    margin: auto;
+    width: 50%;
+    background-color: brown;
+} */
