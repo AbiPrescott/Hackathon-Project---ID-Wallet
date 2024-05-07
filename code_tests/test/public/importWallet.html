@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Import Wallet</title>
+</head>
+<body>
+    <p>please type in your 12-word recovery phrase with a space between each word</p>
+    
+    <input type="text" id="input"/>
+    <button type="button" id="import_btn">import wallet</button>
+
+    <script>
+        const button = document.getElementById('import_btn')
+        const input = document.getElementById('input')
+
+        const string = JSON.stringify({phrase: input.value})
+
+        //console.log(input.value)
+
+        button.addEventListener("click", importWallet);
+//() => console.log(JSON.stringify({phrase: input.value}))
+
+
+        async function importWallet(){
+            console.log(JSON.stringify(input.value))
+            const res = await fetch('http://localhost:8000/importWallet', 
+            {
+                method: "POST",
+                headers: 
+                {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({phrase: input.value})
+                
+                
+            });
+
+            //console.log(res)
+        }
+    </script>
+
+</body>
+</html>

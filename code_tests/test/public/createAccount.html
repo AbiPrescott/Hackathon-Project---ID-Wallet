@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+</head>
+<body>
+    <button type="button" id="button">generate account</button>
+
+    <p>Private Key:</p> 
+    <p id="p1"></p>
+
+    <p>Public Key:</p>
+    <p id="p2"></p>
+
+    <p>Wallet Address:</p>
+    <p id="p3"></p>
+
+    <p>Recovery Phrase:</p>
+    <p id="p4"></p>
+    
+    <p>PLEASE KEEP YOUR PRIVATE KEY AND RECOVERY PHRASE SAFE</p>
+
+    <button type="button">continue to account</button>
+
+    <script>
+        const button = document.getElementById("button")
+        button.addEventListener("click", getWalletAdd)
+
+
+        async function getWalletAdd() {
+            const res = await fetch('http://localhost:8000/wallet', { method: "GET" });
+            console.log(res)
+
+            const properties = await res.json()
+
+            const p1 = document.getElementById("p1")
+            const p2 = document.getElementById("p2")
+            const p3 = document.getElementById("p3")
+            const p4 = document.getElementById("p4")
+
+            p1.innerHTML = properties.privateKey.privateKey
+            p2.innerHTML = properties.publicKey.publicKey
+            p3.innerHTML = properties.walletAddress.walletAddress
+            p4.innerHTML = properties.phrase.phrase
+        }
+    </script>
+</body>
+</html>
