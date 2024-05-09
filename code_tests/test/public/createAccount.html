@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Account</title>
 </head>
-<body>
-    <button type="button" id="button">generate account</button>
 
-    <p>Private Key:</p> 
+<body>
+
+    <!-- CREATE PASSWORD -->
+    <p>create your password</p>
+
+    <input type="password" id="password" name="password" />
+    <input type="submit" id="submit" name="submit" />
+
+    <!-- GENEREATE ACCOUNT -->
+    <button type="button" id="mw_button">generate account</button>
+    <p>Private Key:</p>
     <p id="p1"></p>
 
+    <!-- DISPLAY CREDINTIALS -->
     <p>Public Key:</p>
     <p id="p2"></p>
 
@@ -19,17 +29,23 @@
 
     <p>Recovery Phrase:</p>
     <p id="p4"></p>
-    
+
     <p>PLEASE KEEP YOUR PRIVATE KEY AND RECOVERY PHRASE SAFE</p>
 
     <button type="button">continue to account</button>
 
     <script>
-        const button = document.getElementById("button")
-        button.addEventListener("click", getWalletAdd)
+        //MAKE WALLET
+        const mw_button = document.getElementById("mw_button") //mw stands for 'make wallet'
+        mw_button.addEventListener('click', makeWallet)
+
+        //MAKE PASSWORD
+        const sub_button = document.getElementById('submit')
+        sub_button.addEventListener('click', createPassword)
 
 
-        async function getWalletAdd() {
+        ///////////////////////////// DEFINITIONS OF FUNCTIONS /////////////////////////////////
+        async function makeWallet() {
             const res = await fetch('http://localhost:8000/wallet', { method: "GET" });
             console.log(res)
 
@@ -45,6 +61,17 @@
             p3.innerHTML = properties.walletAddress.walletAddress
             p4.innerHTML = properties.phrase.phrase
         }
+        // password is saved on client instead of server like in MetaMask
+        async function createPassword() {
+            await fetch('http://localhost:8000/create_password', { method: 'POST' })
+                .then(res => res.text())
+                .then(res_text => {
+                    localStorage.setItem('password', res_text)
+                    let my_password = localStorage.getItem('password')
+                    console.log(my_password)
+                })
+        } 
     </script>
 </body>
+
 </html>
