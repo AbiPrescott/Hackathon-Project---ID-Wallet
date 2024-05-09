@@ -71,13 +71,13 @@ function hashPassword(req, res, next) {
 
     var hashed_password = crypto.pbkdf2Sync(password, salt, iterations, keylen, digest)
     res.send(hashed_password.toString('hex'))
-    
+
     next()
 }
 
 
 
-app.post('/create_password', hashPassword)
+app.post('/createPassword', hashPassword)
 
 app.get('/', (req, res) => {
     res.send('<p>hello</p>')
@@ -86,4 +86,5 @@ app.get('/', (req, res) => {
 app.get('/wallet', generateKeys)
 
 app.post('/importWallet', importWallet);
+
 

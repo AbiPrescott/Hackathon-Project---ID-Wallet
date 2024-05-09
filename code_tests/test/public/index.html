@@ -11,13 +11,26 @@
     <img src="../images/logo128.png" alt="logo" />
 
     <h1>Welcome!</h1>
-    <input type="text" placeholder="Password"/>
-    <p>or</p>
-    <button type="button" id="create_btn" onclick="location.href='http://localhost:8000/createAccount.html';">create an account</button>
-    <button type="button" id="import_btn" onclick="location.href='http://localhost:8000/importWallet.html';">import wallet</button>
-    <a href="http://localhost:8000/createAccount.html">hello</a>
+    <input type="text" id="password" placeholder="Password" accesskey="" />
+    
+    <button type="button" id="create_btn" onclick="location.href='http://localhost:8000/createAccount.html';">create an
+        account</button>
+    <button type="button" id="import_btn" onclick="location.href='http://localhost:8000/importWallet.html';">import
+        wallet</button>
 
     <script>
+        // If password was already registered, only give option
+        // to enter password.
+        // Else, give options to create/import wallet
+        if (localStorage.getItem("password") != null) {
+        document.getElementById("create_btn").style.display = 'none'
+        document.getElementById("import_btn").style.display = 'none'
+        } 
+        else {
+        document.getElementById("password").style.display = 'none'
+        }
+
+
 
     </script>
 

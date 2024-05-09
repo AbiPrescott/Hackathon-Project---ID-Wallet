@@ -9,14 +9,14 @@
 
 <body>
 
-    <!-- CREATE PASSWORD -->
+    <!-- CREATE PASSWORD
+    * redirected to accountPage.html when password is submitted -->
     <p>create your password</p>
-
     <input type="password" id="password" name="password" />
-    <input type="submit" id="submit" name="submit" />
+    <input type="submit" id="submit" name="submit" onclick="location.href='http://localhost:8000/accountPage.html'"/>
 
     <!-- GENEREATE ACCOUNT -->
-    <button type="button" id="mw_button">generate account</button>
+    <button type="button" id="cw_button">generate account</button>
     <p>Private Key:</p>
     <p id="p1"></p>
 
@@ -36,8 +36,8 @@
 
     <script>
         //MAKE WALLET
-        const mw_button = document.getElementById("mw_button") //mw stands for 'make wallet'
-        mw_button.addEventListener('click', makeWallet)
+        const cw_button = document.getElementById("cw_button") //'cw' stands for 'create wallet'
+        cw_button.addEventListener('click', makeWallet)
 
         //MAKE PASSWORD
         const sub_button = document.getElementById('submit')
@@ -63,12 +63,11 @@
         }
         // password is saved on client instead of server like in MetaMask
         async function createPassword() {
-            await fetch('http://localhost:8000/create_password', { method: 'POST' })
+            await fetch('http://localhost:8000/createPassword', { method: 'POST' })
                 .then(res => res.text())
                 .then(res_text => {
-                    localStorage.setItem('password', res_text)
-                    let my_password = localStorage.getItem('password')
-                    console.log(my_password)
+                    localStorage.setItem('password', res_text);
+                    console.log('logged')
                 })
         } 
     </script>
