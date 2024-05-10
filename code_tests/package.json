@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "body-parser": "^1.20.2",
-    "web3": "^4.8.0"
-  }
-}

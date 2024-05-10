@@ -1,0 +1,13 @@
+{
+    "manifest_version": 3,
+    "name": "Hush",
+    "version": "1.0.0",
+    "action": {
+        "default_popup": "public/index.html"
+    },
+    "description": "A wallet that holds your tokenised IDs to protect your identity",
+    "icons": {
+        "48": "images/logo48.png",
+        "128": "images/logo128.png"
+    }
+}
