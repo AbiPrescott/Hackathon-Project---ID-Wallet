@@ -3,11 +3,11 @@
     "name": "Hush",
     "version": "1.0.0",
     "action": {
-        "default_popup": "public/index.html"
+        "default_popup": "public/html_files/index.html"
     },
     "description": "A wallet that holds your tokenised IDs to protect your identity",
     "icons": {
-        "48": "images/logo48.png",
-        "128": "images/logo128.png"
+        "48": "public/images/logo48.png",
+        "128": "public/images/logo128.png"
     }
 }

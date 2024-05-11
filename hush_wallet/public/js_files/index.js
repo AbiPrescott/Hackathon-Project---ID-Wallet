@@ -1,7 +1,9 @@
 //////////////////////////////////// RENDERING //////////////////////////////////////
-// If password was already registered, only give option
-// to enter password.
-// Else, give options to create/import wallet
+/* If password was already registered, only give option
+* to enter password.
+* Else, give options to create/import wallet
+*/
+
 if (localStorage.getItem("password") != null) {
     document.getElementById("create_btn").style.display = 'none'
     document.getElementById("import_btn").style.display = 'none'
@@ -17,24 +19,18 @@ create_btn.addEventListener('click', () => window.location.href = 'createAccount
 import_btn.addEventListener('click', () => window.location.href = 'importWallet.html')
 
 ///////////////////////////// PASSWORD VALIDATING //////////////////////////////////
-
 const correct_password = localStorage.getItem('password')
-console.log(correct_password)
 const salt = localStorage.getItem('salt')
 const input = document.getElementById('password')
 
-
-
 input.addEventListener('keydown', event => {
-    if (event.keyCode == 13) {
+    if (event.key == 'Enter') {
         const entered_password = input.value
-        console.log(input.value)
         sendPassword(entered_password)
     }
 })
 
-
-
+///////////////////////////// DEFINITIONS OF FUNCTIONS /////////////////////////////////
 async function sendPassword(entered_password) {
     await fetch('http://localhost:8000/validatePassword',
         {

@@ -1,3 +1,6 @@
+
+// NOT COMPLETE
+
 const button = document.getElementById('import_btn')
 const input = document.getElementById('input')
 
@@ -8,7 +11,7 @@ button.addEventListener("click", importWallet);
 
 async function importWallet(){
     console.log(JSON.stringify(input.value))
-    const res = await fetch('http://localhost:8000/importWallet', 
+    await fetch('http://localhost:8000/importWallet', 
     {
         method: "POST",
         headers: 
@@ -16,8 +19,6 @@ async function importWallet(){
             'Content-type': 'application/json'
         },
         body: JSON.stringify({phrase: input.value})
-        
-        
     });
 
 }
